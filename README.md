@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Tech Stack
 
-## Getting Started
+- **[Next.js 16+](https://nextjs.org/docs/app/getting-started/installation) (App Router)** — Latest version of Next.js with server components and enhanced performance
+- **TypeScript** — Strongly typed and reliable codebase
+- **[Tailwind CSS](https://tailwindcss.com/blog/tailwindcss-v4)** — Utility-first responsive design system
+- **Shadcn/UI** — Clean and reusable UI components
+- **Framer Motion** — Beautiful animations for smoother user experience
+- **Next-Intl** — Multi-language support (English + Persian)
+- **Next.js Multi-Tenant** — Multiple tenants support
+  - **Custom subdomain routing with Next.js middleware**
+  - **Tenant-specific content and pages**
+  - **Shared components and layouts across tenants**
+  - **Redis for tenant data storage**
+  - **Admin interface for managing tenants**
+  - **Support for local development with subdomains**
+- **Axios** — For API communication
+- **React Query / TanStack Query** — Optimized data fetching and caching
+- **Next Auth** — Authentication with request cookie for web and oauth for mobile apps.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Dark / Light Mode** — Full theme customization
+- **Multilingual Support** — English and Persian (RTL support)
+- **Responsive Design** — Optimized for mobile, tablet, and desktop
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Landing Page** — Modern and animated homepage introducing
+- **Cafe Apps** — Dynamic coffee & dessert menu with categories
+- **Online Shop** — Cart and checkout system
+- **Customer Relationship Management** — View order history and manage profile
+- 💬 **AI Barista Assistant** — AI-powered chatbot for personalized drink recommendations
