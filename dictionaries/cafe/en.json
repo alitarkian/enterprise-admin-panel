@@ -1,0 +1,12 @@
+{
+  "landing": {
+    "title": "This is a Cafe page."
+  },
+  "hero": {
+    "capsuleText": "Ali Tarkian",
+    "title": "A Multi-tenant Cafe Landing page",
+    "subtitle": "Built for multiple company or apps",
+    "primaryCtaText": "Get Started",
+    "secondaryCtaText": "GitHub"
+  }
+}

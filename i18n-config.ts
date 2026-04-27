@@ -3,4 +3,4 @@ export const i18n = {
   locales: ["en", "fa", "ar", "ku", "it", "de", "ru", "tr", "fr", "es"],
 } as const;
 
-export type Locale = (typeof i18n)["locales"][number];
+export type Locale = (typeof i18n)["locales"][number] | Subdomain;

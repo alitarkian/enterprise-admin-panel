@@ -8,6 +8,12 @@ export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
 }
 
+export const metadata = {
+  title: "Enterprise marketplace platform",
+  description:
+    "this is a enterprise marketplace platform admin panel modules management with nextjs 16.",
+};
+
 export default async function LangLayout(props: {
   children: React.ReactNode;
   params: Promise<{ lang: Locale }>;

@@ -1,5 +1,10 @@
 {
   "landing": {
     "title": "This is a new page."
+  },
+  "footer": {
+    "builtBy": "Ali Tarkian",
+    "reservedBy": "All rights reserved Built by",
+    "title2": "The source code is available on"
   }
 }

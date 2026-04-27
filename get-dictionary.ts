@@ -1,5 +1,5 @@
 import "server-only";
-import type { Locale } from "./i18n-config";
+import type { Locale, Subdomain } from "./i18n-config";
 
 // We enumerate all dictionaries here for better linting and typescript support
 // We also get the default import for cleaner types
@@ -16,5 +16,26 @@ const dictionaries = {
   es: () => import("./dictionaries/en.json").then((module) => module.default),
 };
 
-export const getDictionary = async (locale: Locale) =>
-  dictionaries[locale]?.() ?? dictionaries.en();
+// export const getDictionary = async (locale: Locale) =>
+//   dictionaries[locale]?.() ?? dictionaries.en();
+
+export const getDictionary = async (
+  locale: Locale,
+  subdomain?: Subdomain,
+): Promise<{ [key: string]: string }> => {
+  let dictionaryPath: string;
+  if (subdomain) {
+    dictionaryPath = `./dictionaries/${subdomain}/${locale}.json`;
+  } else {
+    dictionaryPath = `./dictionaries/${locale}.json`;
+  }
+
+  try {
+    const module = await import(dictionaryPath);
+    return module.default;
+  } catch (error) {
+    dictionaryPath = `./dictionaries/${locale}.json`;
+    const module = await import(dictionaryPath);
+    return module.default;
+  }
+};

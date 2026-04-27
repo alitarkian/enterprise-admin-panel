@@ -14,7 +14,7 @@ interface LocaleSwitcherProps {
 
 const LocaleSwitcher: React.FC<LocaleSwitcherProps> = ({
   showOnMobile = true,
-  currentLang,
+  currentLang = "en",
 }) => {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);

@@ -1,26 +1,8 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-import { match as matchLocale } from "@formatjs/intl-localematcher";
-import Negotiator from "negotiator";
 import { i18n } from "../i18n-config";
-
-function getLocale(request: NextRequest): string | undefined {
-  // Negotiator expects plain object so we need to transform headers
-  const negotiatorHeaders: Record<string, string> = {};
-  request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
-
-  const locales = Array.from(i18n.locales);
-
-  // Use negotiator and intl-localematcher to get best locale
-  let languages = new Negotiator({ headers: negotiatorHeaders }).languages(
-    locales,
-  );
-
-  const locale = matchLocale(languages, locales, i18n.defaultLocale);
-
-  return locale;
-}
+import { extractSubdomain, getLocale } from "./lib/utils";
 
 export async function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
@@ -48,6 +30,17 @@ export async function proxy(request: NextRequest) {
         request.url,
       ),
     );
+  }
+
+  const subdomain = extractSubdomain(request);
+  // public pages → tenant rewrite
+  if (subdomain) {
+    const parts = pathname.split("/").filter(Boolean);
+    const pageParts = parts.slice(1);
+    const locale = getLocale(request);
+    const url = request.nextUrl.clone();
+    url.pathname = `/${locale}/subdomain/${subdomain}/${pageParts.join("/")}`;
+    return NextResponse.rewrite(url);
   }
 }
 
