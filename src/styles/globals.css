@@ -1,8 +1,69 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap");
+@import url("https://fonts.bunny.net/css?family=vazir:400");
+@import url("https://fonts.googleapis.com/css2?family=Amiri:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400&display=swap"); */
+
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+}
+@theme {
+  --font-*: initial;
+  --font-outfit: Outfit, "Domine";
+  --font-vazirmatn: "Vazirmatn", "Domine";
+
+  --color-smoke: #282427;
+  --color-smoke-white: #eeebd9;
+  --color-gold: #c6a86a;
+
+  --color-lux-black: #0b0b0b;
+  --color-lux-white: #f7f6f5;
+  --color-lux-dark-gray: #4a4c50;
+  --color-lux-mid-gray: #9ea0a6;
+  --color-lux-gold: #cba135;
+  --color-lux-gold-bright: #d4af37;
+  --color-lux-platinum: #e6e9eb;
+  --color-lux-divider: rgba(74, 76, 80, 0.08);
+  --color-lux-primary: #1c1c1c;
+  --color-lux-secondary: #fa3d3b;
+  --color-lux-gray: #c6c6c6;
+
+  --color-smoke: #282427;
+  --color-smoke-white: #eeebd9;
+  --color-gold: #c6a86a;
+
+  --color-lux-black: #0b0b0b;
+  --color-lux-green: #15403f;
+  --color-victor-black: #1c1c1c;
+  --color-victor-red: #fa3d3b;
+  --color-victor-gray: #c6c6c6;
+  --color-victor-tee-green: #23714d;
+  --color-victor-tee-white: #f1ccba;
+  --color-victor-cafe-primary: #332b28;
+  --color-victor-cafe-gold: #8e7943;
+  --color-victor-cafe-green: #027b76;
+  --color-victor-cafe-brown: #754531;
+  --color-victor-cafe-orang: #fc602b;
+  --color-victor-black2: #222936;
+  --color-victor-pink: #f3456b;
+  --color-victor-white-warm: #ffe9d7;
+  --color-victor-green-black: #10212b;
+  --color-victor-green-light: #8fa464;
+  --color-victor-green-white: #effbdd;
+  --color-victor-yellow: #faad29;
+  --color-victor-amethyst-light: #3b0458;
+  --color-cherry-red: #74070e;
+  --color-amethysts: #543763;
+  --color-midnight-sky: #1a1b2f;
+
+  --color-current: currentColor;
+  --color-transparent: transparent;
+  --color-white: #ffffff;
+  --color-black: #101828;
 }
 
 @theme inline {
@@ -12,15 +73,44 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
   }
 }
 
+@keyframes linearMove {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(300%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes ellipsis {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+.animate-ellipsis {
+  animation: ellipsis 0.6s infinite cubic-bezier(0, 1, 1, 0);
+}
+
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden !important;
 }

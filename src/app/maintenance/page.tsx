@@ -2,7 +2,7 @@ import Image from "next/image";
 import logo from "@/images/logo/logo.png";
 import "@/styles/underConstruction.css";
 
-export default function Home() {
+export default function MaintenancePage() {
   return (
     <div className="shell">
       <div className="container mx-auto">
@@ -12,14 +12,14 @@ export default function Home() {
         </header>
 
         <section className="hero heroColumns">
-          <div className="heroText">
+          <div className="heroText mx-auto">
             <h1>
               We are <span>Under Construction</span> coming soon!
             </h1>
             <p>Transforming Ideas into Cutting-Edge Digital Solutions</p>
           </div>
 
-          <div className="heroImage">
+          <div className="heroImage mx-auto">
             <Image src={logo.src} alt="Ali Tarkian" width={360} height={360} />
           </div>
         </section>

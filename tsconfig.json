@@ -20,8 +20,11 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
+      "@/i18n-config": ["./i18n-config"],
+      "@/get-dictionary": ["./get-dictionary"],
       "@/styles/*": ["./src/styles/*"],
       "@/images/*": ["./public/images/*"],
+      "@/components/*": ["./src/components/*"],
     }
   },
   "include": [
