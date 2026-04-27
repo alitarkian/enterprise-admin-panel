@@ -3,6 +3,12 @@ import logo from "@/images/logo/logo.png";
 import "@/styles/globals.css";
 import "@/styles/underConstruction.css";
 
+export const metadata = {
+  title: "Enterprise marketplace platform",
+  description:
+    "this is a enterprise marketplace platform admin panel modules management with nextjs 16.",
+};
+
 export default function MaintenancePage() {
   return (
     <html>
