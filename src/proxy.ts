@@ -29,6 +29,13 @@ export async function proxy(request: NextRequest) {
       !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`,
   );
 
+  // maintenance
+  if (process.env.NEXT_PUBLIC_MAINTENANCE_MODE === "true") {
+    const url = request.nextUrl.clone();
+    url.pathname = `/maintenance`;
+    return NextResponse.rewrite(url);
+  }
+
   // Redirect if there is no locale
   if (pathnameIsMissingLocale) {
     const locale = getLocale(request);
