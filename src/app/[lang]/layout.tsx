@@ -3,6 +3,7 @@ import { i18n, type Locale } from "@/i18n-config";
 import { ThemeProvider } from "next-themes";
 import "@/styles/globals.css";
 import { Suspense } from "react";
+import { isRtl } from "@/lib/utils";
 
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
@@ -20,12 +21,11 @@ export default async function LangLayout(props: {
 }) {
   const { lang } = await props.params;
   const { children } = props;
-  const isRTL = lang === "fa" || lang === "ar" || lang === "ku";
 
   return (
     <html
       lang={lang}
-      dir={isRTL ? "rtl" : "ltr"}
+      dir={isRtl(lang) ? "rtl" : "ltr"}
       suppressHydrationWarning
       className={`h-full antialiased`}
     >

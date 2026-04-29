@@ -38,7 +38,7 @@ export function extractSubdomain(request?: NextRequest): string | null {
 
   if (hostname.includes("localhost")) {
     const match = hostname.match(/^([^.]+)\.localhost/);
-    return match ? match[1] : null;
+    return match ? match[1] : process.env.NEXT_PUBLIC_DEFAULT_LANDING;
   }
 
   const root = rootDomain.split(":")[0];
@@ -46,7 +46,7 @@ export function extractSubdomain(request?: NextRequest): string | null {
     return hostname.replace(`.${root}`, "");
   }
 
-  return null;
+  return process.env.NEXT_PUBLIC_DEFAULT_LANDING;
 }
 
 const RTL_LANGS = ["fa", "ar", "ku"];
@@ -60,3 +60,7 @@ export function formatSegment(segment: string) {
     .replace(/-/g, " ")
     .replace(/\b\w/g, (char) => char.toUpperCase());
 }
+
+export const protectedRoutes = ["/dashboard", "/profile", "/settings", "/apps"];
+export const authRoutes = ["/sign-in", "/sign-up"];
+export const publicRoutes = ["/"];

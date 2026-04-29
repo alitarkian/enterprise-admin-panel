@@ -5,7 +5,7 @@
 - **[Tailwind CSS](https://tailwindcss.com/blog/tailwindcss-v4)** — Utility-first responsive design system
 - **Shadcn/UI** — Clean and reusable UI components
 - **Framer Motion** — Beautiful animations for smoother user experience
-- **Next-Intl** — Multi-language support (English + Persian)
+- **i18n-config** — Multi-language support (English + Persian)
 - **Next.js Multi-Tenant** — Multiple tenants support
   - **Custom subdomain routing with Next.js middleware**
   - **Tenant-specific content and pages**
@@ -13,6 +13,7 @@
   - **Redis for tenant data storage**
   - **Admin interface for managing tenants**
   - **Support for local development with subdomains**
+  - **The system supports independent translations for each subdomain**
 - **Axios** — For API communication
 - **React Query / TanStack Query** — Optimized data fetching and caching
 - **Next Auth** — Authentication with request cookie for web and oauth for mobile apps.

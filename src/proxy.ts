@@ -2,10 +2,19 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 import { i18n } from "../i18n-config";
-import { extractSubdomain, getLocale } from "./lib/utils";
+import {
+  authRoutes,
+  extractSubdomain,
+  getLocale,
+  protectedRoutes,
+  publicRoutes,
+} from "./lib/utils";
+import { cookies } from "next/headers";
 
 export async function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
+  const cookie = (await cookies()).get("access_token")?.value;
+
   const pathnameIsMissingLocale = i18n.locales.every(
     (locale) =>
       !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`,
@@ -34,11 +43,22 @@ export async function proxy(request: NextRequest) {
 
   const subdomain = extractSubdomain(request);
   // public pages → tenant rewrite
+  const parts = pathname.split("/").filter(Boolean);
+  const pageParts = parts.slice(1);
+  const page = `/${parts[parts.length - 1]}`;
+  const locale = getLocale(request);
+  const url = request.nextUrl.clone();
+
+  const isProtectedRoute = protectedRoutes.includes(page);
+  const isAuthRoutes = authRoutes.includes(page);
+  const isPublicRoute = publicRoutes.includes(page);
+  if (isProtectedRoute && !cookie) {
+    return NextResponse.redirect(new URL(`/auth/sign-in`, request.nextUrl));
+  }
+  if (cookie && isAuthRoutes) {
+    return NextResponse.redirect(new URL(`/dashboard`, request.nextUrl));
+  }
   if (subdomain) {
-    const parts = pathname.split("/").filter(Boolean);
-    const pageParts = parts.slice(1);
-    const locale = getLocale(request);
-    const url = request.nextUrl.clone();
     url.pathname = `/${locale}/subdomain/${subdomain}/${pageParts.join("/")}`;
     return NextResponse.rewrite(url);
   }

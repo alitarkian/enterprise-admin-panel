@@ -30,22 +30,22 @@ axiosClient.interceptors.request.use(
   (error) => Promise.reject(error),
 );
 
-axiosClient.interceptors.response.use(
-  (res) => res,
-  async (error) => {
-    const original = error.config;
-    if (error.response?.status === 401 && !original._retry) {
-      original._retry = true;
-      try {
-        await axiosClient.post(API_ENDPOINTS.AUTH.REFRESH_TOKEN);
-        return axiosClient(original);
-      } catch (error) {
-        console.warn("Session expired");
-      }
-    }
+// axiosClient.interceptors.response.use(
+//   (res) => res,
+//   async (error) => {
+//     const original = error.config;
+//     if (error.response?.status === 401 && !original._retry) {
+//       original._retry = true;
+//       try {
+//         await axiosClient.post(API_ENDPOINTS.AUTH.REFRESH_TOKEN);
+//         return axiosClient(original);
+//       } catch (error) {
+//         console.warn("Session expired");
+//       }
+//     }
 
-    return Promise.reject(error);
-  },
-);
+//     return Promise.reject(error);
+//   },
+// );
 
 export default axiosClient;

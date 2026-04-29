@@ -7,7 +7,7 @@ export default async function Layout(props: {
   params: Promise<{ lang: Locale }>;
 }) {
   const { lang } = await props.params;
-  const dictionary = await getDictionary(lang, null);
+  const dictionary = await getDictionary(lang, "alitarkian");
 
   return (
     <div className="flex min-h-screen flex-col">

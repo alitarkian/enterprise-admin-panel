@@ -1,5 +1,7 @@
 import "@/styles/globals.css";
 import "@/styles/underConstruction.css";
+import alert_bg from "@/images/svg/alert.svg";
+import LazyImage from "@/components/ui/images/LazyImage";
 
 export const metadata = {
   title: "404 — Page Not Found",
@@ -19,7 +21,13 @@ export default function NotFound() {
 
             <section className="hero heroColumns self-center!">
               <div className="heroText text-center! mx-auto! w-full!">
-                <h1>
+                <LazyImage
+                  src={alert_bg.src}
+                  alt="page not found!"
+                  width={500}
+                  className="mx-auto mb-5"
+                />
+                <h1 className="text-center">
                   Page <span>Not Found</span> !
                 </h1>
                 <p>Transforming Ideas into Cutting-Edge Digital Solutions</p>

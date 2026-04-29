@@ -24,6 +24,7 @@
       "@/get-dictionary": ["./get-dictionary"],
       "@/styles/*": ["./src/styles/*"],
       "@/images/*": ["./public/images/*"],
+      "@/subdomain-images/*": ["./public/subdomain/*"],
       "@/components/*": ["./src/components/*"],
     }
   },
